@@ -1,0 +1,44 @@
+---
+title: "manipulation"
+author: "Shuyi SHEN"
+date: "9/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+litters_data=read_csv("./data_import_examples/FAS_litters.csv")
+FAS_pups=read_csv("./data_import_examples/FAS_pups.csv")
+
+litters_data=janitor::clean_names(litters_data)
+pups_data=janitor::clean_names(FAS_pups)
+
+```
+
+## selecting
+
+
+```{r cars}
+select(litters_data,group, litter_number, gd0_weight, pups_born_alive,starts_with("pups"))
+
+select(litters_data,litter_number,group,gd0_weight)
+select(litters_data,litter_number,group,everything())
+
+select(litters_data,-group)
+
+select(litters_data,litter_number,gd0_weight:pups_born_alive)
+
+select(litters_data,GROUP=group,litter_number)
+
+
+```
+
+## Including Plots
+
+
+
+```{r pressure, echo=FALSE}
+
+```
+
+
