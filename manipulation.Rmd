@@ -33,12 +33,47 @@ select(litters_data,GROUP=group,litter_number)
 
 ```
 
-## Including Plots
+## filter
 
 
 
 ```{r pressure, echo=FALSE}
+filter(litters_data,group=="Con7")
+filter(litters_data,gd_of_birth<20)
+filter(litters_data,gd_of_birth>=20)
+filter(litters_data,pups_born_alive<6)
+filter(litters_data,pups_born_alive<6,group=="Con7")
+filter(litters_data,group=="Con7"|group=="Mod8")     ##  |  or
+filter(litters_data,gd0_weight<gd18_weight)
+filter(litters_data,!is.na(gd0_weight))     #去na
+drop_na(litters_data,gd0_weight)     #去na
+
 
 ```
 
 
+
+#mutate
+
+```{r}
+mutate(litters_data,wt_gain=gd18_weight-gd0_weight,group=str_to_lower(group),group=str_to_upper(group))
+
+
+
+```
+
+#arrange
+```{r}
+
+arrange(litters_data,pups_born_alive)              #sort function
+arrange(litters_data,desc(pups_born_alive))
+arrange(litters_data,pups_born_alive,gd0_weight)
+
+
+
+
+
+
+
+
+```
